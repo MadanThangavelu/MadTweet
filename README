@@ -1,8 +1,8 @@
-/* Author : Madan Thangavelu
-/* Date : July 31 2008
+Author : Madan Thangavelu
+Date : July 31 2008
 MadTweet : A firefox pluign that rotates tweets relevant to the content you are browsing
 
-https://github.com/MadanThangavelu/MadTweet/blob/master/realtweet.jpg
+.. image::https://github.com/MadanThangavelu/MadTweet/blob/master/realtweet.jpg
 
 V.1.0.0
 No images available. Link to the tweets unavailable. Message rotates at a maximum of 8 seconds delay.
