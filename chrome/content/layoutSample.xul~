@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+
+<overlay id="dom" 
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+         
+<toolbox id="navigator-toolbox">
+     <toolbar id="GoogBarToolbar" toolbarname="Shark" image="chrome://Madtweet/content/images/shark.png">
+     <toolbarseparator />
+     <toolbarbutton id="getRateButt" label="Old Value" oncommand="readDOM.getRates(event);" image="chrome://Madtweet/content/images/old.png"/>
+     <textbox id="gRate" cols="1" size="5" value="25" onclick ="readDOM.cleanRate();"/>
+     <toolbarbutton id="setRateButt" label="New Value" oncommand="readDOM.setRates(event);" image="chrome://Madtweet/content/images/new.png" />
+     <toolbarseperator />
+     <checkbox id="Enable_Video" label="Enable Video"  checked="false" command="catch_video"/>
+     <command id="catch_video" oncommand="readDOM.catchVideo();"/>
+     </toolbar>
+</toolbox> 
+<popup id="contentAreaContextMenu">
+	<menuitem id="helloworld" label="Reserve This Post : Shark" accesskey="R"
+	 insertafter="context-openlinkintab" oncommand=""/>
+</popup>
+ 
+</overlay>

@@ -1,0 +1,73 @@
+/* Author : Madan Thangavelu
+/* Date : July 31 2008
+SharK
+
+Version 2.0.3
+May 09 2009
+
+Added preferences to ignore titles in 
+extensions.dom.title1
+-----------------------------------------------------------------------------------
+
+
+Version 2.0.2
+Dec 13 2008
+
+The image table structure changed for image opps
+so did a try/ catch method to correct in ReadDom.Navigate();
+
+Changes the video enable error to default unchecked
+
+----------------------------------------------------------------------------------------
+Version: 2.0.1
+
+Improvments over 1.0.1
+Changed from right click version to Toolbar Version
+
+Bug: Fixed alert msg that used to come with lesser words Image Opp
+
+Can update cost and words at runtime
+
+Gets content auto form first tab
+
+Can pause and continue
+
+
+------------------------------------------------------------------------------------------------------
+Improvments over 1.0.2
+
+Picks up random answers to submit
+
+Download Button:
+Can download the page with the changes
+
+Login button introduced:
+Takes you to login page of PPP
+
+Right Click Reserve:
+Added Feature to right click and reserve within this addon.
+(opens in new window)
+
+Shark Icon Added on installation
+
+--------------------------------------------------------------------------------------------------------
+
+Improvements over 1.0.3
+
+Bug: 6 second delay reduced to 1 second delay
+
+--------------------------------------------------------------------------------------------------------
+
+Improvements over 1.0.3 or
+improvements in 1.0.4
+
+Changed choseable time seetting option
+sets default time to 1 sec
+
+
+Improvements in 2.0.1
+Introduced video enable button
+
+
+Improvements in 2.0.3
+Ablity to avoid certain opps. Also corrected for the new design.which is because of a new TR added at the base showing the number of red ops in the page.

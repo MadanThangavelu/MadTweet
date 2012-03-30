@@ -1,0 +1,2 @@
+content     madtweet    chrome/content/
+overlay chrome://browser/content/browser.xul chrome://madtweet/content/madtweet.xul

@@ -1,0 +1,141 @@
+function helloCallback(data,ioArgs) {
+	//alert(data);
+	var myObject = eval('(' + data + ')');
+	//alert(myObject);
+	//alert(myObject.results[0].text);
+	//return myObject;
+	madtweetresults = myObject;
+	madtweet.rotateTweet();
+	}   
+
+function helloError(data, ioArgs) {
+   alert('Error when retrieving data from the server!');
+   }
+
+
+function doDojo(pageTitle){
+	var calTwitter="http://search.twitter.com/search.json?q="+pageTitle;
+   dojo.xhrGet({
+				url: calTwitter,
+				load: helloCallback,
+				error: helloError
+	});	
+}
+var madtweetTitles = new Array();
+var madtweetGlobalCounter = 1;
+var madtweetresults = '';
+var madtweet =
+{ 
+
+	display:function(tweet){
+	msg =  document.getElementById("tweetLabel");
+	if(tweet)
+		msg.value = unescape(tweet);
+	}, 
+	
+   getData:function(){
+       doDojo();
+	},
+	
+	onPageLoad: function(aEvent) {
+    var doc = aEvent.originalTarget; // doc is document that triggered "onload" event
+    // do something with the loaded page.
+    // doc.location is a Location object (see below for a link).
+    // You can use it to make your code executed on certain pages only.
+    	if(doc.location != "about:blank"){
+    		 if(doc instanceof HTMLDocument) {
+    			if(gBrowser.currentURI.spec == doc.location){
+    			// Reaches here only once when the page is loaded completely.
+    			// Should note the page title here for the search 
+					var rawHtmlData = window.content.document.getElementsByTagName('html')[0].innerHTML;
+					var pageTitle = window.content.document.getElementsByTagName('title')[0].innerHTML;
+    				
+    				/*
+    				// Following can be used if history needs to be stored for visited pages
+    				// Current version querries twitter each time.
+    				if(madtweetTitles[pageTitle] == null){
+    					// New page search twitter
+    					madtweetTitles[pageTitle] = madtweetGlobalCounter;
+    					alert(madtweetTitles[pageTitle]);
+    					madtweetGlobalCounter = madtweetGlobalCounter + 1;    				
+    				}else{
+    				// Old page extract from saved results
+    				
+    				}
+    				*/
+    				// Call function to query twitter.
+					
+    				madtweet.queryTwitter(pageTitle);
+    				
+    			}
+    		 }
+    	}
+    },
+	
+	loadinit:function(){
+	 var appcontent = document.getElementById("appcontent");   // browser
+    if(appcontent)
+      appcontent.addEventListener("DOMContentLoaded", madtweet.onPageLoad, true);
+    var messagepane = document.getElementById("messagepane"); // mail
+    if(messagepane)
+      messagepane.addEventListener("load", function () { madtweet.onPageLoad(); }, true);
+	},
+	
+	
+	queryTwitter:function(pageTitle){
+	   //alert("hi");
+		// Construct a query string with each word OR
+		var split = 0;
+		var splitter = pageTitle.split(' ');
+		var queryString ='';
+		if(split){
+		//alert(splitter.length());
+		//alert(splitter.length);
+		//alert(splitter[0]);
+		//alert(pageTitle);
+		
+		for(i=0;i<5;i++){
+			//alert(splitter[i]);	
+			if(splitter[i]!= null)
+				queryString = queryString+"+OR+"+escape(splitter[i]);
+		}	
+		}else{
+		
+			for(i=0;i<3;i++){
+			//alert(splitter[i]);
+			if(splitter[i]!= null)	
+				queryString = queryString+" "+escape(splitter[i]);
+			}	
+		}
+		//alert(queryString);
+		doDojo(queryString);
+		//alert(queryString);
+		
+	},
+	
+	rotateTweet:function(){
+		//setTimeout("madtweet.showRandom()", 250);
+		window.setTimeout('madtweet.showRandom()', 10000);
+		//alert(madtweetresults.results[0].text);
+	},
+	
+	showRandom:function(){
+		//alert(madtweetresults.results.length);
+		maxValue = madtweetresults.results.length;
+	   //alert(maxValue);
+	   randomnumber = Math.floor(Math.random()*maxValue);
+		//alert(randomnumber);
+		var showText = madtweetresults.results[randomnumber].text;
+		if(showText.length < 100)
+			madtweet.display(showText)
+		
+		madtweet.rotateTweet();
+	},
+	
+	
+}		
+
+
+window.addEventListener("load", function() { madtweet.loadinit(); }, true);
+
+
